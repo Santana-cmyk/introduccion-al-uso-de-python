@@ -1,0 +1,20 @@
+"""
+Nombre: Daniel Santana Bueno
+
+Desc: 
+Dada la lista de videojuegos que se encuentra en el anexo II, muestra por pantalla
+solo los videojuegos que cuesten más de 20€.
+"""
+
+videojuegos = [
+    { "titulo " : "The Legend of Zelda: BOTW", "consola" : "Nintendo Switch","precio": 59.99},
+    { "titulo " : "Hollow Knight", "consola" : "PC","precio": 14.99},
+    { "titulo " : "Stardew Valley", "consola" : "Playstation 4","precio": 13.99},
+    { "titulo " : "Assassin's Creed Shadows", "consola" : "Playstation 5","precio": 69.99},
+    { "titulo " : "Resident evil Requiem", "consola" : "Playstation 5","precio": 79.99},
+    { "titulo " : "Trails in the Sky  1st Chapter", "consola" : "Nintendo Switch","precio": 49.99}
+ ]
+
+for videojuego in videojuegos:
+    if videojuego["precio"] > 20:
+        print(videojuego)
