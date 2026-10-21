@@ -11,7 +11,7 @@ def ejercicio1():
         "raza": "Saiyan",
         "nivel_pelea": 100000000,
         "tecnicas": ["Espada Ki", "Burning Attack", "Big Bang Attack"],
-        "atributos": {"fuerza": 88, "defensa": 80, "velocidad": 85}
+        "atributos": {"fuerza": 88, "defensa": 80, "velocidad": 85},
     }
     # append() añade el diccionario al final de la lista 'personajes'
     personajes.append(nuevo_personaje)
@@ -24,7 +24,9 @@ def ejercicio2():
         # Guardamos el diccionario interno para no repetir personaje["atributos"]
         atributos = personaje["atributos"]
         # La media es la suma de los tres valores dividida entre 3
-        media = (atributos["fuerza"] + atributos["defensa"] + atributos["velocidad"]) / 3
+        media = (
+            atributos["fuerza"] + atributos["defensa"] + atributos["velocidad"]
+        ) / 3
         # Si supera 80, imprimimos el personaje entero (sin darle formato)
         if media > 80:
             print(personaje)
@@ -69,39 +71,32 @@ def ejercicio4():
 
 
 def ejercicio5():
-    # EJERCICIO 5: mostrar nombre y defensa de los personajes a los que
-    # derrotaría Vegeta. Un personaje derrota a otro si su fuerza es mayor
-    # que la defensa del otro.
-
-    # Paso 1: buscar a Vegeta y guardar su fuerza.
-    # Se accede a un diccionario dentro de otro con dos claves seguidas:
-    # personaje["atributos"]["fuerza"]
-    fuerza_vegeta = None
+    # Paso 1: Buscar a Vegeta de forma eficiente
+    vegeta = None
     for personaje in personajes:
         if personaje["nombre"] == "Vegeta":
-            fuerza_vegeta = personaje["atributos"]["fuerza"]
-            break  # ya lo hemos encontrado, no hace falta seguir
+            vegeta = personaje
+            break  # Rompemos el bucle: ya lo encontramos, no hace falta seguir buscando
 
-    # Si Vegeta no estuviera en la lista, no hay nada que mostrar
-    if fuerza_vegeta is None:
+    # Si no se encuentra a Vegeta, avisamos y salimos de la función para evitar que el programa falle
+    if vegeta is None:
+        print("Vegeta no se encuentra en la lista de personajes.")
         return
 
-    # Paso 2: comparar la fuerza de Vegeta con la defensa de cada personaje.
-    # Se excluye a Vegeta: no puede derrotarse a sí mismo.
+    # Paso 2: Comparar e imprimir
+    fuerza_vegeta = vegeta["atributos"]["fuerza"]
     for personaje in personajes:
-        if personaje["nombre"] != "Vegeta" and fuerza_vegeta > personaje["atributos"]["defensa"]:
-            # Formato pedido, por ejemplo: Goku 83
-            print(personaje["nombre"], personaje["atributos"]["defensa"])
+        if personaje["nombre"] != "Vegeta":
+            if fuerza_vegeta > personaje["atributos"]["defensa"]:
+                print(personaje["nombre"], personaje["atributos"]["defensa"])
 
 
 def ejercicio6():
     # Recorremos una COPIA de la lista (personajes.copy()) y borramos de la
     # original. Si recorriéramos la original mientras borramos, se saltarían
     # elementos.
-    for personaje in personajes.copy():
-        if personaje["raza"] == "Saiyan":
+    for personaje in personajes[:]:
+        if personaje["raza"] == "Cazador de demonios":
             personajes.remove(personaje)
 
-    # Mostramos los personajes restantes sin darles formato
-    for personaje in personajes:
-        print(personaje)
+    print(personajes)

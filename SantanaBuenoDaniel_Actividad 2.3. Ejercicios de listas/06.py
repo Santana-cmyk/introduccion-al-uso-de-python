@@ -2,19 +2,20 @@
 Nombre: Daniel Santana Bueno
 
 Desc:
-Inserta al final de la lista un nuevo pokémon que tenga todos los campos con algún
-valor con sentido (puedes inventártelos, pero que sean razonables).
+Crea un nuevo Pokémon en una variable, añádelo al final de la lista y muestra
+el valor asociado al tipo Agua.
 """
 
 from anexo1 import pokemons
 
-pokemons.append(
-    {
-        "nombre": "Palkia",
-        "generacion": 4,
-        "categoria": "Espacial",
-        "tipos": ["Agua", "Dragon"],
-        "peso_kg": 336.0,
-        "altura_m": 4.2,
-    }
-)
+nuevo_pokemon = {
+    "nombre": "Palkia",
+    "generacion": 4,
+    "categoria": "Espacial",
+    "tipos": {"Agua": 660, "Dragon": 63},
+    "peso_kg": 336.0,
+    "altura_m": 4.2,
+}
+
+pokemons.append(nuevo_pokemon)
+print(pokemons[-1]["tipos"]["Agua"])
