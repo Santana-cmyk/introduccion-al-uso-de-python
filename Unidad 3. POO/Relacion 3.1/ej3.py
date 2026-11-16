@@ -12,10 +12,18 @@ que daría 12,1€. Devuelve el resultado con dos decimales, redondeando
 hacia arriba.
 """
 
-from decimal import Decimal, ROUND_CEILING
-
-
 def calcularValorBruto(precio, tipoIVA):
+    """Calcula el precio bruto de un producto aplicando el IVA indicado.
+
+    Args:
+        precio: Precio neto del producto.
+        tipoIVA: Tipo de IVA: "GENERAL", "REDUCIDO" o "SUPERREDUCIDO".
+
+    Returns:
+        float: El valor bruto tras aplicar el IVA
+    Raises:
+        ValueError: Si el tipo de IVA no es válido.
+    """
     if tipoIVA == "GENERAL":
         porcentaje = 21
     elif tipoIVA == "REDUCIDO":
@@ -25,7 +33,5 @@ def calcularValorBruto(precio, tipoIVA):
     else:
         raise ValueError("Tipo de IVA no válido")
 
-    precio = Decimal(str(precio))
-    bruto = precio * (100 + porcentaje) / 100
-    bruto = bruto.quantize(Decimal("0.01"), rounding=ROUND_CEILING)
-    return float(bruto)
+    bruto = round(precio * (100 + porcentaje) / 100, 2)
+    return bruto
