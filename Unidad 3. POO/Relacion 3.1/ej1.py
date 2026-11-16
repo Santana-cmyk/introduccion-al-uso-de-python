@@ -14,7 +14,7 @@ def comprobarLetraDNI(dni):
     if len(dni) != 9:
         return False
 
-    numero = dni[:8]
+    numero = dni[0:8]
     for digito in numero:
         if digito not in "0123456789":
             return False
@@ -22,3 +22,4 @@ def comprobarLetraDNI(dni):
     letras = "TRWAGMYFPDXBNJZSQVHLCKE"
     letra_correcta = letras[int(numero) % 23]
     return dni[8].upper() == letra_correcta
+
