@@ -1,0 +1,20 @@
+def calcular_pedido(precios, cupon=""):
+    if not precios:
+        return 0, 0, 0
+
+    subtotal = sum(precios)
+    descuento = 0
+    envio = 350
+    if subtotal >= 3000:
+        envio = 0
+        if cupon.strip().upper() == "AHORRO10":
+            descuento = subtotal // 10
+
+    return subtotal, descuento, subtotal - descuento + envio
+
+
+if __name__ == "__main__":
+    assert calcular_pedido([1500, 1509], " ahorro10 ") == (3009, 300, 2709)
+    assert calcular_pedido([2999], "AHORRO10") == (2999, 0, 3349)
+    assert calcular_pedido([3000]) == (3000, 0, 3000)
+    assert calcular_pedido([]) == (0, 0, 0)
