@@ -1,3 +1,11 @@
+"""
+clave
+
+Valida una clave de 6 a 12 caracteres. Solo admite letras ASCII, dígitos y
+guiones. Debe empezar por una letra y contener al menos un dígito. Devuelve
+un booleano.
+"""
+
 def validar_clave(clave):
     letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     digitos = "0123456789"

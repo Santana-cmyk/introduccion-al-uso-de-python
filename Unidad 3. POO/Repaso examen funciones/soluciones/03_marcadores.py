@@ -1,3 +1,12 @@
+"""
+marcadores
+
+Recibe una lista de marcadores con dos enteros no negativos por partido
+(goles a favor y en contra). Devuelve un diccionario con victorias, empates,
+derrotas, puntos y diferencia de goles. Una victoria suma 3 puntos y un
+empate suma 1. La diferencia es goles a favor menos goles en contra.
+"""
+
 def resumir_marcadores(marcadores):
     resumen = {"victorias": 0, "empates": 0, "derrotas": 0,
                "puntos": 0, "diferencia": 0}

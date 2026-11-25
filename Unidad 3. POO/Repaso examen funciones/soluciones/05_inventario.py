@@ -1,3 +1,14 @@
+"""
+inventario
+
+Recibe un diccionario con las existencias por producto y una lista de pares
+(producto, cantidad solicitada). Procesa los pedidos en orden. Acepta un
+pedido si la cantidad es positiva, el producto existe y queda stock
+suficiente. Descuenta las unidades solo de los pedidos aceptados. Devuelve
+el inventario final y la lista de pedidos rechazados en el orden en que
+llegaron. Conserva el inventario original.
+"""
+
 def preparar_pedidos(inventario, pedidos):
     disponibles = inventario.copy()
     rechazados = []
